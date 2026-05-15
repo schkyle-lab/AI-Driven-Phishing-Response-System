@@ -1,8 +1,8 @@
-import urequests  # MicroPython library for handling HTTP network requests
-import time       # Library for introducing delays and timing functions
-from machine import Pin  # Hardware library to directly control ESP32/Raspberry Pi Pico GPIO pins
-import json       # Library to parse and format JSON data payloads
-from config import API_KEY  # Security best practice: Imports secrets from an external configuration file
+import urequests
+import time
+from machine import Pin
+import json
+from config import API_KEY
 
 # --- HARDWARE & SOAR CONFIGURATION ---
 # Initialize GPIO pins. Pin.OUT configures them to send voltage signals to peripherals.
@@ -12,8 +12,8 @@ RELAY = Pin(14, Pin.OUT)      # Physical "Kill Switch": Controls a physical rela
 
 # Mock telemetry input queue: Simulates incoming data streams harvested from a SIEM or email monitor
 suspicious_urls = [
-    "http://google.com",            # Legitimate domain (Safe baseline)
-    "http://secure-login-bank.xyz"  # Lookalike domain pattern (Phishing indicator)
+    "http://google.com",
+    "http://secure-login-bank.xyz"
 ]
 
 def ai_analyze_url(url):
